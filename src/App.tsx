@@ -1,5 +1,5 @@
 import React from "react";
-import Timer2 from "./components/Timer2";
+import Timer from "./components/Timer";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -7,7 +7,7 @@ const App: React.FC = () => {
     <div className="App">
       <header className="App-header">
         <h1>"App Goes Here"</h1>
-        <Timer2 />
+        <Timer />
       </header>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Timer2 = () => {
+const Timer = () => {
   const [value, setValue] = useState(5);
 
   // decrease value by 1 until value === 0
@@ -21,4 +21,4 @@ const Timer2 = () => {
   );
 };
 
-export default Timer2;
+export default Timer;
