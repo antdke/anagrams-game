@@ -9,10 +9,20 @@ import React from "react";
  */
 
 const BottomRow = () => {
-  const wordBank = ["ACTORS", "ASCENT", "RENTAL"];
+  const wordBank = ["ACTORS", "ASCENT", "RENTAL", "MASTER", "SKATED"];
+
+  function randomSelect(words: any) {
+    //random number selector
+    let randNum = Math.floor(Math.random() * (4 - 0) + 0);
+    //return word from array with number as index
+    return words[randNum];
+  }
+
+  let oneWord = randomSelect(wordBank);
+
   return (
     <div>
-      <h1>This is where we store the Words</h1>
+      <h1>{oneWord}</h1>
     </div>
   );
 };
