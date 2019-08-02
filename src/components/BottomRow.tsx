@@ -60,10 +60,7 @@ const BottomRow = () => {
   const [fifthLetter, setFifthLetter] = React.useState(scrambledLetters[4]);
   const [sixthLetter, setSixthLetter] = React.useState(scrambledLetters[5]);
 
-  // function handleClick(letter: string) {
-  //   lettersPassed = [letter, ...lettersPassed];
-  // }
-
+  // The state of the total word being passed
   const [lettersPassed, setLettersPassed] = React.useState("");
 
   return (
@@ -73,26 +70,24 @@ const BottomRow = () => {
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
-      <button onClick={() => setLettersPassed(firstLetter + lettersPassed)}>
+      <button onClick={() => setLettersPassed(lettersPassed + firstLetter)}>
         {firstLetter}
       </button>
-      <button onClick={() => setLettersPassed(secondLetter + lettersPassed)}>
+      <button onClick={() => setLettersPassed(lettersPassed + secondLetter)}>
         {secondLetter}
       </button>
-      <button onClick={() => setLettersPassed(thirdLetter + lettersPassed)}>
+      <button onClick={() => setLettersPassed(lettersPassed + thirdLetter)}>
         {thirdLetter}
       </button>
-      <button onClick={() => setLettersPassed(fourthLetter + lettersPassed)}>
+      <button onClick={() => setLettersPassed(lettersPassed + fourthLetter)}>
         {fourthLetter}
       </button>
-      <button onClick={() => setLettersPassed(fifthLetter + lettersPassed)}>
+      <button onClick={() => setLettersPassed(lettersPassed + fifthLetter)}>
         {fifthLetter}
       </button>
-      <button onClick={() => setLettersPassed(sixthLetter + lettersPassed)}>
+      <button onClick={() => setLettersPassed(lettersPassed + sixthLetter)}>
         {sixthLetter}
       </button>
-      {/*Debug: Seeing if a changed value can be passed */}
-      <button onClick={() => setLettersPassed("A")}> Test </button>
     </div>
   );
 };

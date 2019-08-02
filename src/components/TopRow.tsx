@@ -2,7 +2,7 @@ import React from "react";
 
 /**
  * This compenent will:
- * 1. Take props (letters array) from BottomRow
+ * 1. Take props (letters string) from BottomRow
  * 2. Display the letter in an input field
  */
 
