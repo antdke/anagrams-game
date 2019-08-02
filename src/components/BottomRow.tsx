@@ -39,10 +39,14 @@ const BottomRow = () => {
 
   let oneWord = randomSelect(wordBank);
   let oneScrambledWord = scrambleWord(oneWord);
+  //split scrambled word into an array of letters
+  let scrambledLetters = oneScrambledWord.split("");
 
   return (
     <div>
-      <h1>{oneScrambledWord}</h1>
+      {scrambledLetters.map(letter => (
+        <button>{letter}</button>
+      ))}
     </div>
   );
 };
