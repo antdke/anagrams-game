@@ -73,22 +73,22 @@ const BottomRow = () => {
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
-      <button onClick={() => setLettersPassed(firstLetter)}>
+      <button onClick={() => setLettersPassed(firstLetter + lettersPassed)}>
         {firstLetter}
       </button>
-      <button onClick={() => setLettersPassed(secondLetter)}>
+      <button onClick={() => setLettersPassed(secondLetter + lettersPassed)}>
         {secondLetter}
       </button>
-      <button onClick={() => setLettersPassed(thirdLetter)}>
+      <button onClick={() => setLettersPassed(thirdLetter + lettersPassed)}>
         {thirdLetter}
       </button>
-      <button onClick={() => setLettersPassed(fourthLetter)}>
+      <button onClick={() => setLettersPassed(fourthLetter + lettersPassed)}>
         {fourthLetter}
       </button>
-      <button onClick={() => setLettersPassed(fifthLetter)}>
+      <button onClick={() => setLettersPassed(fifthLetter + lettersPassed)}>
         {fifthLetter}
       </button>
-      <button onClick={() => setLettersPassed(sixthLetter)}>
+      <button onClick={() => setLettersPassed(sixthLetter + lettersPassed)}>
         {sixthLetter}
       </button>
       {/*Debug: Seeing if a changed value can be passed */}
