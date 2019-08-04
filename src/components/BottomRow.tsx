@@ -42,15 +42,6 @@ const BottomRow = () => {
   let oneScrambledWord = scrambleWord(oneWord);
   //split scrambled word into an array of letters
   let scrambledLetters = oneScrambledWord.split("");
-  // an array to pass to TopRow and function to edit the array
-  //var lettersPassed = ["A", "B"];
-
-  //add letter to the front of the array and return the array
-  function AddLetterToFront(letter: string, lettersPassed: Array<string>) {
-    lettersPassed.splice(0, 0, letter);
-    console.log(lettersPassed);
-    return [...lettersPassed];
-  }
 
   //give each letter its own state
   const [firstLetter, setFirstLetter] = React.useState(scrambledLetters[0]);
