@@ -1,6 +1,5 @@
 import React from "react";
 import TopRow from "./TopRow";
-import { string, any } from "prop-types";
 
 /**
  * This component will:
@@ -55,19 +54,10 @@ const BottomRow = () => {
   // The state of the total word being passed
   const [lettersPassed, setLettersPassed] = React.useState("");
 
-  //function to delete letters from TopRow when clicked
-  function deleteLetter(deletedLetter: string, lettersArray: any) {
-    const newLetters = lettersArray.filter(
-      (letter: any) => letter != deletedLetter
-    );
-    lettersArray = newLetters;
-    return lettersArray;
-  }
-
   return (
     <div>
       {/* What if the problem is that the lettersPassed value in .map is out of reach to the TopRow component???? */}
-      <TopRow letters={lettersPassed} deleteLetter={deleteLetter} />
+      <TopRow letters={lettersPassed} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}

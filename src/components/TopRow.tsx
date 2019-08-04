@@ -8,17 +8,33 @@ import React from "react";
 
 type TopRowProps = {
   letters: string;
-  deleteLetter: Function;
 };
 
-const TopRow: React.FC<TopRowProps> = ({ letters, deleteLetter }) => {
-  let lettersArray = letters.split("");
+const TopRow: React.FC<TopRowProps> = ({ letters }) => {
+  const lettersArray = letters.split("");
+  // let lettersArrayTemp = [...lettersArray];
+  const [newLettersArray, setNewLettersArray] = React.useState(lettersArray);
+  //const lettersArray = letters.split("");
+  //setNewLettersArray(lettersArray);
+
+  console.log(lettersArray);
+
+  //function to delete letters from TopRow when clicked
+  function deleteLetter(deletedLetter: string) {
+    const newLetters = lettersArray.filter(
+      (letter: any) => letter != deletedLetter
+    );
+    // console.log(newLetters);
+    // lettersArrayTemp = newLetters.slice();
+
+    setNewLettersArray(newLetters);
+  }
 
   return (
     <div>
       <section>
         {lettersArray.map(letter => (
-          <button>{letter}</button>
+          <button onClick={() => deleteLetter(letter)}>{letter}</button>
         ))}
       </section>
     </div>
