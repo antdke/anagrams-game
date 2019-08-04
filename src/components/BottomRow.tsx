@@ -1,5 +1,6 @@
 import React from "react";
 import TopRow from "./TopRow";
+import { string, any } from "prop-types";
 
 /**
  * This component will:
@@ -53,6 +54,15 @@ const BottomRow = () => {
 
   // The state of the total word being passed
   const [lettersPassed, setLettersPassed] = React.useState("");
+
+  //function to delete letters from TopRow when clicked
+  function deleteLetter(deletedLetter: string, lettersArray: any) {
+    const newLetters = lettersArray.filter(
+      (letter: any) => letter != deletedLetter
+    );
+    lettersArray = newLetters;
+    return lettersArray;
+  }
 
   return (
     <div>
