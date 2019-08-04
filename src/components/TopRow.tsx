@@ -11,9 +11,15 @@ type TopRowProps = {
 };
 
 const TopRow: React.FC<TopRowProps> = ({ letters }) => {
+  let lettersArray = letters.split("");
+
   return (
     <div>
-      <h1>{letters}</h1>
+      <section>
+        {lettersArray.map(letter => (
+          <button>{letter}</button>
+        ))}
+      </section>
     </div>
   );
 };
