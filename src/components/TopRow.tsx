@@ -8,9 +8,10 @@ import React from "react";
 
 type TopRowProps = {
   letters: string;
+  deleteLetter: Function;
 };
 
-const TopRow: React.FC<TopRowProps> = ({ letters }) => {
+const TopRow: React.FC<TopRowProps> = ({ letters, deleteLetter }) => {
   let lettersArray = letters.split("");
 
   return (
