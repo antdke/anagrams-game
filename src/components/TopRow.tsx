@@ -8,23 +8,10 @@ import React from "react";
 
 type TopRowProps = {
   letters: string;
-  deleteLetter: Function;
 };
 
-const TopRow: React.FC<TopRowProps> = ({ letters, deleteLetter }) => {
-  const lettersArray = letters.split("");
-
-  return (
-    <div>
-      <section>
-        {lettersArray.map((letter, index) => (
-          <section>
-            <button onClick={() => deleteLetter(index)}>{letter}</button>
-          </section>
-        ))}
-      </section>
-    </div>
-  );
+const TopRow: React.FC<TopRowProps> = ({ letters }) => {
+  return <div>{letters}</div>;
 };
 
 export default TopRow;
