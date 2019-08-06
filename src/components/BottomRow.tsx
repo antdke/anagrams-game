@@ -78,6 +78,10 @@ const BottomRow = () => {
       <button onClick={() => handleClick(fourthLetter)}>{fourthLetter}</button>
       <button onClick={() => handleClick(fifthLetter)}>{fifthLetter}</button>
       <button onClick={() => handleClick(sixthLetter)}>{sixthLetter}</button>
+
+      <section>
+        <button onClick={() => backspace(letters)}>delete</button>
+      </section>
     </div>
   );
 };
