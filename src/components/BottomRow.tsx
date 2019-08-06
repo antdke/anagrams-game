@@ -38,19 +38,14 @@ const BottomRow = () => {
     return letters.join("");
   }
 
-  function deleteLetter(deletedLetter: string) {
-    const newLetters = lettersArray.filter(letter => letter != deletedLetter);
+  // delete the last letter of the word
+  function backspace(deletedLetter: string) {
+    setLetters(letters.slice(0, letters.length - 1));
   }
 
-  // function to create the new array upon click
+  // function to create the new string upon click
   function handleClick(letter: string) {
-    // equivolant of onChange since we're not typing anything
-    setTempLetters(letter);
-    // letters click at the end of new word
-    var tempLetterArray = [...lettersArray, tempLetters];
-    // set letters show to the newly created array
-    setLettersArray(tempLetterArray);
-    tempLetterArray = [];
+    setLetters(letters + letter);
   }
 
   let oneWord = randomSelect(wordBank);
@@ -67,16 +62,14 @@ const BottomRow = () => {
   const [sixthLetter, setSixthLetter] = React.useState(scrambledLetters[5]);
 
   // The state of the total word being passed
-  const [lettersArray, setLettersArray] = React.useState(["Test"]);
+  const [letters, setLetters] = React.useState("");
   // The state of a temp string to handle transfer to real state array
-  const [tempLetters, setTempLetters] = React.useState("");
-
-  console.log(lettersArray);
+  //const [tempLetters, setTempLetters] = React.useState("");
 
   return (
     <div>
-      {/* What if the problem is that the lettersArray value in .map is out of reach to the TopRow component???? */}
-      {/*<TopRow letters={lettersArray} deleteLetter={deleteLetter} /> */}
+      {/* What if the problem is that the letters value in .map is out of reach to the TopRow component???? */}
+      {/*<TopRow letters={letters} deleteLetter={deleteLetter} /> */}
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
