@@ -10,12 +10,13 @@ import TopRow from "./TopRow";
  */
 
 const BottomRow = () => {
-  const wordBank = ["ACTORS", "ASCENT", "RENTAL", "MASTER", "SKATED"];
+  // test words
+  const wordBank = ["MASTER"];
 
   // a function to randomnly select a word from wordBank
   function randomSelect(words: any) {
-    //random number selector
-    let randNum = Math.floor(Math.random() * (4 - 0) + 0);
+    //random number selector - VALUE IS 0 for SINGLE TEST WORD
+    let randNum = Math.floor(Math.random() * (0 - 0) + 0);
     //return word from array with number as index
     return words[randNum];
   }
