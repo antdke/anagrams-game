@@ -38,7 +38,7 @@ const BottomRow = () => {
     return letters.join("");
   }
 
-  function deleteLetter() {}
+  function deleteLetter(deletedLetter: string) {}
 
   let oneWord = randomSelect(wordBank);
   let oneScrambledWord = scrambleWord(oneWord);
@@ -54,31 +54,31 @@ const BottomRow = () => {
   const [sixthLetter, setSixthLetter] = React.useState(scrambledLetters[5]);
 
   // The state of the total word being passed
-  const [lettersPassed, setLettersPassed] = React.useState("");
+  const [lettersArray, setLettersArray] = React.useState("");
 
   return (
     <div>
-      {/* What if the problem is that the lettersPassed value in .map is out of reach to the TopRow component???? */}
-      <TopRow letters={lettersPassed} deleteLetter={deleteLetter} />
+      {/* What if the problem is that the lettersArray value in .map is out of reach to the TopRow component???? */}
+      <TopRow letters={lettersArray} deleteLetter={deleteLetter} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
-      <button onClick={() => setLettersPassed(lettersPassed + firstLetter)}>
+      <button onClick={() => setLettersArray(lettersArray + firstLetter)}>
         {firstLetter}
       </button>
-      <button onClick={() => setLettersPassed(lettersPassed + secondLetter)}>
+      <button onClick={() => setLettersArray(lettersArray + secondLetter)}>
         {secondLetter}
       </button>
-      <button onClick={() => setLettersPassed(lettersPassed + thirdLetter)}>
+      <button onClick={() => setLettersArray(lettersArray + thirdLetter)}>
         {thirdLetter}
       </button>
-      <button onClick={() => setLettersPassed(lettersPassed + fourthLetter)}>
+      <button onClick={() => setLettersArray(lettersArray + fourthLetter)}>
         {fourthLetter}
       </button>
-      <button onClick={() => setLettersPassed(lettersPassed + fifthLetter)}>
+      <button onClick={() => setLettersArray(lettersArray + fifthLetter)}>
         {fifthLetter}
       </button>
-      <button onClick={() => setLettersPassed(lettersPassed + sixthLetter)}>
+      <button onClick={() => setLettersArray(lettersArray + sixthLetter)}>
         {sixthLetter}
       </button>
     </div>
