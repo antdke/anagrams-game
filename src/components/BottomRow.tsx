@@ -38,19 +38,20 @@ const BottomRow = () => {
     return letters.join("");
   }
 
+  // delete the last letter of the word
+  function backspace(deletedLetter: string) {
+    setLetters(letters.slice(0, letters.length - 1));
+  }
+
+  // function to create the new string upon click
+  function handleClick(letter: string) {
+    setLetters(letters + letter);
+  }
+
   let oneWord = randomSelect(wordBank);
   let oneScrambledWord = scrambleWord(oneWord);
   //split scrambled word into an array of letters
   let scrambledLetters = oneScrambledWord.split("");
-  // an array to pass to TopRow and function to edit the array
-  //var lettersPassed = ["A", "B"];
-
-  //add letter to the front of the array and return the array
-  function AddLetterToFront(letter: string, lettersPassed: Array<string>) {
-    lettersPassed.splice(0, 0, letter);
-    console.log(lettersPassed);
-    return [...lettersPassed];
-  }
 
   //give each letter its own state
   const [firstLetter, setFirstLetter] = React.useState(scrambledLetters[0]);
@@ -61,33 +62,26 @@ const BottomRow = () => {
   const [sixthLetter, setSixthLetter] = React.useState(scrambledLetters[5]);
 
   // The state of the total word being passed
-  const [lettersPassed, setLettersPassed] = React.useState("");
+  const [letters, setLetters] = React.useState("");
+  // The state of a temp string to handle transfer to real state array
+  //const [tempLetters, setTempLetters] = React.useState("");
 
   return (
     <div>
-      {/* What if the problem is that the lettersPassed value in .map is out of reach to the TopRow component???? */}
-      <TopRow letters={lettersPassed} />
+      <TopRow letters={letters} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
-      <button onClick={() => setLettersPassed(lettersPassed + firstLetter)}>
-        {firstLetter}
-      </button>
-      <button onClick={() => setLettersPassed(lettersPassed + secondLetter)}>
-        {secondLetter}
-      </button>
-      <button onClick={() => setLettersPassed(lettersPassed + thirdLetter)}>
-        {thirdLetter}
-      </button>
-      <button onClick={() => setLettersPassed(lettersPassed + fourthLetter)}>
-        {fourthLetter}
-      </button>
-      <button onClick={() => setLettersPassed(lettersPassed + fifthLetter)}>
-        {fifthLetter}
-      </button>
-      <button onClick={() => setLettersPassed(lettersPassed + sixthLetter)}>
-        {sixthLetter}
-      </button>
+      <button onClick={() => handleClick(firstLetter)}>{firstLetter}</button>
+      <button onClick={() => handleClick(secondLetter)}>{secondLetter}</button>
+      <button onClick={() => handleClick(thirdLetter)}>{thirdLetter}</button>
+      <button onClick={() => handleClick(fourthLetter)}>{fourthLetter}</button>
+      <button onClick={() => handleClick(fifthLetter)}>{fifthLetter}</button>
+      <button onClick={() => handleClick(sixthLetter)}>{sixthLetter}</button>
+
+      <section>
+        <button onClick={() => backspace(letters)}>delete</button>
+      </section>
     </div>
   );
 };

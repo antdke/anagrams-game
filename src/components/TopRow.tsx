@@ -2,8 +2,8 @@ import React from "react";
 
 /**
  * This compenent will:
- * 1. Take props (letters string) from BottomRow
- * 2. Display the letter in an input field
+ * 1. Display the string created as user clicks buttons
+ * in BottomRow
  */
 
 type TopRowProps = {
@@ -11,11 +11,7 @@ type TopRowProps = {
 };
 
 const TopRow: React.FC<TopRowProps> = ({ letters }) => {
-  return (
-    <div>
-      <h1>{letters}</h1>
-    </div>
-  );
+  return <div>{letters}</div>;
 };
 
 export default TopRow;

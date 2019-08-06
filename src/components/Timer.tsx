@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Timer = () => {
-  const [value, setValue] = useState(5);
+  const [value, setValue] = useState(60);
 
   // decrease value by 1 until value === 0
   function tick(timerId: any) {
