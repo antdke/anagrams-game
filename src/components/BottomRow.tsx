@@ -68,7 +68,6 @@ const BottomRow = () => {
 
   return (
     <div>
-      {/* What if the problem is that the letters value in .map is out of reach to the TopRow component???? */}
       <TopRow letters={letters} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
