@@ -38,7 +38,20 @@ const BottomRow = () => {
     return letters.join("");
   }
 
-  function deleteLetter(deletedLetter: string) {}
+  function deleteLetter(deletedLetter: string) {
+    const newLetters = lettersArray.filter(letter => letter != deletedLetter);
+  }
+
+  // function to create the new array upon click
+  function handleClick(letter: string) {
+    // equivolant of onChange since we're not typing anything
+    setTempLetters(letter);
+    // letters click at the end of new word
+    var tempLetterArray = [...lettersArray, tempLetters];
+    // set letters show to the newly created array
+    setLettersArray(tempLetterArray);
+    tempLetterArray = [];
+  }
 
   let oneWord = randomSelect(wordBank);
   let oneScrambledWord = scrambleWord(oneWord);
@@ -54,33 +67,25 @@ const BottomRow = () => {
   const [sixthLetter, setSixthLetter] = React.useState(scrambledLetters[5]);
 
   // The state of the total word being passed
-  const [lettersArray, setLettersArray] = React.useState("");
+  const [lettersArray, setLettersArray] = React.useState(["Test"]);
+  // The state of a temp string to handle transfer to real state array
+  const [tempLetters, setTempLetters] = React.useState("");
+
+  console.log(lettersArray);
 
   return (
     <div>
       {/* What if the problem is that the lettersArray value in .map is out of reach to the TopRow component???? */}
-      <TopRow letters={lettersArray} deleteLetter={deleteLetter} />
+      {/*<TopRow letters={lettersArray} deleteLetter={deleteLetter} /> */}
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
-      <button onClick={() => setLettersArray(lettersArray + firstLetter)}>
-        {firstLetter}
-      </button>
-      <button onClick={() => setLettersArray(lettersArray + secondLetter)}>
-        {secondLetter}
-      </button>
-      <button onClick={() => setLettersArray(lettersArray + thirdLetter)}>
-        {thirdLetter}
-      </button>
-      <button onClick={() => setLettersArray(lettersArray + fourthLetter)}>
-        {fourthLetter}
-      </button>
-      <button onClick={() => setLettersArray(lettersArray + fifthLetter)}>
-        {fifthLetter}
-      </button>
-      <button onClick={() => setLettersArray(lettersArray + sixthLetter)}>
-        {sixthLetter}
-      </button>
+      <button onClick={() => handleClick(firstLetter)}>{firstLetter}</button>
+      <button onClick={() => handleClick(secondLetter)}>{secondLetter}</button>
+      <button onClick={() => handleClick(thirdLetter)}>{thirdLetter}</button>
+      <button onClick={() => handleClick(fourthLetter)}>{fourthLetter}</button>
+      <button onClick={() => handleClick(fifthLetter)}>{fifthLetter}</button>
+      <button onClick={() => handleClick(sixthLetter)}>{sixthLetter}</button>
     </div>
   );
 };
