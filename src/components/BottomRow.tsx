@@ -173,6 +173,12 @@ const BottomRow = () => {
     return result;
   }
 
+  // state of whether user is correct or not
+  // controls whether correct effects or wrong effects happen
+  const [correctOrNot, setCorrectOrNot] = React.useState("Neither");
+
+  function isValid(word: string) {}
+
   // a function to randomnly select a word from wordBank
   function randomSelect(words: any) {
     //random number selector - VALUE IS 0 for SINGLE TEST WORD
@@ -242,6 +248,7 @@ const BottomRow = () => {
 
       <section>
         <button onClick={() => backspace(letters)}>delete</button>
+        <button onClick={() => isValid(letters)}>submit word</button>
       </section>
     </div>
   );
