@@ -1,5 +1,6 @@
 import React from "react";
 import TopRow from "./TopRow";
+import classNames from "classnames";
 
 /**
  * This component will:
@@ -182,7 +183,19 @@ const BottomRow = () => {
   function isValid(userWord: string, gameWord: string) {
     //grab array of anagram words for the current game word
     validWords = getValidArray(gameWord);
-    // console.log(validWords); DEBUG: CHECK IF ARRAY FROM OBJECT IS PASSED TO THIS FUNCTION
+
+    // check if user generate word is in list of acceptable words
+    if (validWords.includes(userWord)) {
+      // if so, make this state true to trigger 'correct' effects
+      setCorrectOrNot("True");
+      // then clear letters in TopRow
+      setLetters("");
+    } else {
+      // if not, make this state false to trigger 'incorrect' effects
+      setCorrectOrNot("False");
+      // clear letters in TopRow
+      setLetters("");
+    }
   }
 
   // a function to randomnly select a word from wordBank
