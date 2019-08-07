@@ -184,6 +184,8 @@ const BottomRow = () => {
    */
   // change color of validation text
   const [correctOrNotColor, setCorrectOrNotColor] = React.useState("");
+  // keep track of score - add +1 point for every correct word
+  const [score, setScore] = React.useState(0);
 
   function isValid(userWord: string, gameWord: string) {
     //grab array of anagram words for the current game word
@@ -194,6 +196,8 @@ const BottomRow = () => {
       // if so, make this state true to trigger 'correct' effects
       setCorrectOrNot("True");
       setCorrectOrNotColor("green");
+      // add 1 to the score
+      setScore(score + 1);
       // then clear letters in TopRow
       setLetters("");
       // returns state back to neither
@@ -267,6 +271,7 @@ const BottomRow = () => {
   return (
     <div>
       <h1 style={{ color: correctOrNotColor }}>Valid???</h1>
+      <h2>{score}</h2>
       <TopRow letters={letters} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
