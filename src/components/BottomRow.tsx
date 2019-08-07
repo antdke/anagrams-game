@@ -1,6 +1,5 @@
 import React from "react";
 import TopRow from "./TopRow";
-import classNames from "classnames";
 
 /**
  * This component will:
@@ -180,21 +179,33 @@ const BottomRow = () => {
   // controls whether correct effects or wrong effects happen
   const [correctOrNot, setCorrectOrNot] = React.useState("Neither");
 
+  /**
+   * TEMPORARY states to test user word validation
+   */
+  // change color of validation text
+  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("");
+
   function isValid(userWord: string, gameWord: string) {
     //grab array of anagram words for the current game word
     validWords = getValidArray(gameWord);
 
     // check if user generate word is in list of acceptable words
-    if (validWords.includes(userWord)) {
+    if (validWords.includes(userWord.toLowerCase())) {
       // if so, make this state true to trigger 'correct' effects
       setCorrectOrNot("True");
+      setCorrectOrNotColor("green");
       // then clear letters in TopRow
       setLetters("");
+      // returns state back to neither
+      setCorrectOrNot("Neither");
     } else {
       // if not, make this state false to trigger 'incorrect' effects
       setCorrectOrNot("False");
+      setCorrectOrNotColor("red");
       // clear letters in TopRow
       setLetters("");
+      // returns state back to neither
+      setCorrectOrNot("Neither");
     }
   }
 
@@ -255,6 +266,7 @@ const BottomRow = () => {
 
   return (
     <div>
+      <h1 style={{ color: correctOrNotColor }}>Valid???</h1>
       <TopRow letters={letters} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
