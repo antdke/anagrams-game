@@ -10,12 +10,209 @@ import TopRow from "./TopRow";
  */
 
 const BottomRow = () => {
-  const wordBank = ["ACTORS", "ASCENT", "RENTAL", "MASTER", "SKATED"];
+  // test words
+  const wordBank = ["MASTER"];
+
+  // stores all the valid anagrams words for a world in word bank
+  var validWords = [];
+
+  // function to get the array of valid words for whatever word is randomly selected
+  function getValidArray(gameWord: string) {
+    var result = [];
+
+    const anagrams: any = {
+      MASTER: [
+        "armets",
+        "master",
+        "maters",
+        "matres",
+        "ramets",
+        "stream",
+        "tamers",
+        "tremas",
+        "arets",
+        "armet",
+        "aster",
+        "earst",
+        "mares",
+        "marse",
+        "marts",
+        "maser",
+        "mater",
+        "mates",
+        "meats",
+        "ramet",
+        "rates",
+        "reams",
+        "reast",
+        "resat",
+        "satem",
+        "smart",
+        "smear",
+        "stare",
+        "steam",
+        "stear",
+        "strae",
+        "tamer",
+        "tames",
+        "tares",
+        "taser",
+        "teams",
+        "tears",
+        "teras",
+        "terms",
+        "trams",
+        "trema",
+        "ames",
+        "ares",
+        "aret",
+        "arms",
+        "arse",
+        "arts",
+        "ates",
+        "ears",
+        "east",
+        "eats",
+        "eras",
+        "erst",
+        "etas",
+        "maes",
+        "mare",
+        "mars",
+        "mart",
+        "mase",
+        "mast",
+        "mate",
+        "mats",
+        "meat",
+        "mesa",
+        "meta",
+        "mets",
+        "rams",
+        "rase",
+        "rast",
+        "rate",
+        "rats",
+        "ream",
+        "rems",
+        "rest",
+        "rets",
+        "same",
+        "sate",
+        "seam",
+        "sear",
+        "seat",
+        "sera",
+        "seta",
+        "star",
+        "stem",
+        "taes",
+        "tame",
+        "tams",
+        "tare",
+        "tars",
+        "team",
+        "tear",
+        "teas",
+        "tems",
+        "term",
+        "tram",
+        "tres",
+        "tsar",
+        "ame",
+        "are",
+        "arm",
+        "ars",
+        "art",
+        "ate",
+        "ats",
+        "ear",
+        "eas",
+        "eat",
+        "ems",
+        "era",
+        "erm",
+        "ers",
+        "est",
+        "eta",
+        "mae",
+        "mar",
+        "mas",
+        "mat",
+        "mes",
+        "met",
+        "ram",
+        "ras",
+        "rat",
+        "rem",
+        "res",
+        "ret",
+        "sae",
+        "sam",
+        "sar",
+        "sat",
+        "sea",
+        "ser",
+        "set",
+        "sma",
+        "tae",
+        "tam",
+        "tar",
+        "tas",
+        "tea",
+        "tes"
+      ],
+      TEST: ["test"],
+      TEST2: ["test"],
+      TEST3: ["test"]
+    };
+
+    // selects word that matched current word used in-game
+    result = anagrams[gameWord];
+    // console.log(gameWord);  DEBUG: CALL GAME WORD
+    // console.log(anagrams[gameWord]); DEBUG: CHECK IF OBJECT LOOKUP WORKS
+
+    return result;
+  }
+
+  // state of whether user is correct or not
+  // controls whether correct effects or wrong effects happen
+  const [correctOrNot, setCorrectOrNot] = React.useState("Neither");
+
+  /**
+   * TEMPORARY states to test user word validation
+   */
+  // change color of validation text
+  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("");
+
+  function isValid(userWord: string, gameWord: string) {
+    //grab array of anagram words for the current game word
+    validWords = getValidArray(gameWord);
+
+    // check if user generate word is in list of acceptable words
+    if (validWords.includes(userWord.toLowerCase())) {
+      // if so, make this state true to trigger 'correct' effects
+      setCorrectOrNot("True");
+      setCorrectOrNotColor("green");
+      // then clear letters in TopRow
+      setLetters("");
+      // returns state back to neither
+      setCorrectOrNot("Neither");
+    } else {
+      // if not, make this state false to trigger 'incorrect' effects
+      setCorrectOrNot("False");
+      setCorrectOrNotColor("red");
+      // clear letters in TopRow
+      setLetters("");
+      // returns state back to neither
+      setCorrectOrNot("Neither");
+    }
+  }
 
   // a function to randomnly select a word from wordBank
   function randomSelect(words: any) {
-    //random number selector
-    let randNum = Math.floor(Math.random() * (4 - 0) + 0);
+    //random number selector - VALUE IS 0 for SINGLE TEST WORD
+    let randNum = Math.floor(Math.random() * (0 - 0) + 0);
     //return word from array with number as index
     return words[randNum];
   }
@@ -48,9 +245,10 @@ const BottomRow = () => {
     setLetters(letters + letter);
   }
 
-  let oneWord = randomSelect(wordBank);
-  let oneScrambledWord = scrambleWord(oneWord);
-  //split scrambled word into an array of letters
+  // GAME WORD
+  let gameWord = randomSelect(wordBank);
+  let oneScrambledWord = scrambleWord(gameWord);
+  // split scrambled word into an array of letters
   let scrambledLetters = oneScrambledWord.split("");
 
   //give each letter its own state
@@ -61,13 +259,14 @@ const BottomRow = () => {
   const [fifthLetter, setFifthLetter] = React.useState(scrambledLetters[4]);
   const [sixthLetter, setSixthLetter] = React.useState(scrambledLetters[5]);
 
-  // The state of the total word being passed
+  // USER GENERATED WORD: The state of the total word being passed
   const [letters, setLetters] = React.useState("");
   // The state of a temp string to handle transfer to real state array
   //const [tempLetters, setTempLetters] = React.useState("");
 
   return (
     <div>
+      <h1 style={{ color: correctOrNotColor }}>Valid???</h1>
       <TopRow letters={letters} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
@@ -81,6 +280,7 @@ const BottomRow = () => {
 
       <section>
         <button onClick={() => backspace(letters)}>delete</button>
+        <button onClick={() => isValid(letters, gameWord)}>submit word</button>
       </section>
     </div>
   );
