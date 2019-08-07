@@ -169,8 +169,8 @@ const BottomRow = () => {
 
     // selects word that matched current word used in-game
     result = anagrams[gameWord];
-    console.log(gameWord);
-    console.log(anagrams[gameWord]);
+    // console.log(gameWord);  DEBUG: CALL GAME WORD
+    // console.log(anagrams[gameWord]); DEBUG: CHECK IF OBJECT LOOKUP WORKS
 
     return result;
   }
@@ -182,7 +182,7 @@ const BottomRow = () => {
   function isValid(userWord: string, gameWord: string) {
     //grab array of anagram words for the current game word
     validWords = getValidArray(gameWord);
-    console.log(validWords);
+    // console.log(validWords); DEBUG: CHECK IF ARRAY FROM OBJECT IS PASSED TO THIS FUNCTION
   }
 
   // a function to randomnly select a word from wordBank
