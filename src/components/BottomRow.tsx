@@ -14,10 +14,10 @@ const BottomRow = () => {
   const wordBank = ["MASTER"];
 
   // stores all the valid anagrams words for a world in word bank
-  const validWords = [];
+  var validWords = [];
 
   // function to get the array of valid words for whatever word is randomly selected
-  function getValidArray(oneWord: string) {
+  function getValidArray(gameWord: string) {
     var result = [];
 
     const anagrams: any = {
@@ -168,7 +168,9 @@ const BottomRow = () => {
     };
 
     // selects word that matched current word used in-game
-    result = anagrams[oneWord];
+    result = anagrams[gameWord];
+    console.log(gameWord);
+    console.log(anagrams[gameWord]);
 
     return result;
   }
@@ -177,7 +179,11 @@ const BottomRow = () => {
   // controls whether correct effects or wrong effects happen
   const [correctOrNot, setCorrectOrNot] = React.useState("Neither");
 
-  function isValid(word: string) {}
+  function isValid(userWord: string, gameWord: string) {
+    //grab array of anagram words for the current game word
+    validWords = getValidArray(gameWord);
+    console.log(validWords);
+  }
 
   // a function to randomnly select a word from wordBank
   function randomSelect(words: any) {
@@ -215,9 +221,10 @@ const BottomRow = () => {
     setLetters(letters + letter);
   }
 
-  let oneWord = randomSelect(wordBank);
-  let oneScrambledWord = scrambleWord(oneWord);
-  //split scrambled word into an array of letters
+  // GAME WORD
+  let gameWord = randomSelect(wordBank);
+  let oneScrambledWord = scrambleWord(gameWord);
+  // split scrambled word into an array of letters
   let scrambledLetters = oneScrambledWord.split("");
 
   //give each letter its own state
@@ -228,7 +235,7 @@ const BottomRow = () => {
   const [fifthLetter, setFifthLetter] = React.useState(scrambledLetters[4]);
   const [sixthLetter, setSixthLetter] = React.useState(scrambledLetters[5]);
 
-  // The state of the total word being passed
+  // USER GENERATED WORD: The state of the total word being passed
   const [letters, setLetters] = React.useState("");
   // The state of a temp string to handle transfer to real state array
   //const [tempLetters, setTempLetters] = React.useState("");
@@ -248,7 +255,7 @@ const BottomRow = () => {
 
       <section>
         <button onClick={() => backspace(letters)}>delete</button>
-        <button onClick={() => isValid(letters)}>submit word</button>
+        <button onClick={() => isValid(letters, gameWord)}>submit word</button>
       </section>
     </div>
   );
