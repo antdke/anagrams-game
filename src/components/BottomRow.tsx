@@ -190,10 +190,15 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
   const [correctOrNotColor, setCorrectOrNotColor] = React.useState("");
   // keep track of score - add +1 point for every correct word
   const [score, setScore] = React.useState(0);
+  // keep track of words used already by user
+  const [userWordArray, setUserWordArray] = React.useState([""]);
 
   function isValid(userWord: string, gameWord: string) {
     //grab array of anagram words for the current game word
     validWords = getValidArray(gameWord);
+    // for every word generate by user, add to userWordArrary
+    setUserWordArray([userWord, ...userWordArray]);
+    console.log(userWordArray.toString());
 
     // check if user generate word is in list of acceptable words
     if (validWords.includes(userWord.toLowerCase())) {
