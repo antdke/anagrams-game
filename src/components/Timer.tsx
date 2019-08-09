@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BottomRow from "./BottomRow";
 
 const Timer = () => {
   const [value, setValue] = useState(60);
@@ -17,6 +18,7 @@ const Timer = () => {
   return (
     <div>
       <h1>{value}</h1>
+      <BottomRow />
     </div>
   );
 };
