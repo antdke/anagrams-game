@@ -269,8 +269,64 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
 
   // USER GENERATED WORD: The state of the total word being passed
   const [letters, setLetters] = React.useState("");
-  // The state of a temp string to handle transfer to real state array
-  //const [tempLetters, setTempLetters] = React.useState("");
+
+  // functions that disables all buttons once timer hits zero
+
+  const bt = document.getElementById("btGame") as HTMLTextAreaElement;
+  if (time > 0 && bt != null) {
+    bt.disabled = false;
+  } else if (time === 0 && bt != null) {
+    bt.disabled = true;
+  }
+
+  const bt2 = document.getElementById("btGame2") as HTMLTextAreaElement;
+  if (time > 0 && bt2 != null) {
+    bt2.disabled = false;
+  } else if (time === 0 && bt2 != null) {
+    bt2.disabled = true;
+  }
+
+  const bt3 = document.getElementById("btGame3") as HTMLTextAreaElement;
+  if (time > 0 && bt3 != null) {
+    bt3.disabled = false;
+  } else if (time === 0 && bt3 != null) {
+    bt3.disabled = true;
+  }
+
+  const bt4 = document.getElementById("btGame4") as HTMLTextAreaElement;
+  if (time > 0 && bt4 != null) {
+    bt4.disabled = false;
+  } else if (time === 0 && bt4 != null) {
+    bt4.disabled = true;
+  }
+
+  const bt5 = document.getElementById("btGame5") as HTMLTextAreaElement;
+  if (time > 0 && bt5 != null) {
+    bt5.disabled = false;
+  } else if (time === 0 && bt5 != null) {
+    bt5.disabled = true;
+  }
+
+  const bt6 = document.getElementById("btGame6") as HTMLTextAreaElement;
+  if (time > 0 && bt6 != null) {
+    bt6.disabled = false;
+  } else if (time === 0 && bt6 != null) {
+    bt6.disabled = true;
+  }
+
+  const bt7 = document.getElementById("btGame7") as HTMLTextAreaElement;
+  if (time > 0 && bt7 != null) {
+    bt7.disabled = false;
+  } else if (time === 0 && bt7 != null) {
+    bt7.disabled = true;
+  }
+
+  const bt8 = document.getElementById("btGame8") as HTMLTextAreaElement;
+  if (time > 0 && bt8 != null) {
+    bt8.disabled = false;
+  } else if (time === 0 && bt8 != null) {
+    bt8.disabled = true;
+  }
 
   return (
     <div>
@@ -280,16 +336,32 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
-      <button onClick={() => handleClick(firstLetter)}>{firstLetter}</button>
-      <button onClick={() => handleClick(secondLetter)}>{secondLetter}</button>
-      <button onClick={() => handleClick(thirdLetter)}>{thirdLetter}</button>
-      <button onClick={() => handleClick(fourthLetter)}>{fourthLetter}</button>
-      <button onClick={() => handleClick(fifthLetter)}>{fifthLetter}</button>
-      <button onClick={() => handleClick(sixthLetter)}>{sixthLetter}</button>
+      <button onClick={() => handleClick(firstLetter)} id="btGame">
+        {firstLetter}
+      </button>
+      <button onClick={() => handleClick(secondLetter)} id="btGame2">
+        {secondLetter}
+      </button>
+      <button onClick={() => handleClick(thirdLetter)} id="btGame3">
+        {thirdLetter}
+      </button>
+      <button onClick={() => handleClick(fourthLetter)} id="btGame4">
+        {fourthLetter}
+      </button>
+      <button onClick={() => handleClick(fifthLetter)} id="btGame5">
+        {fifthLetter}
+      </button>
+      <button onClick={() => handleClick(sixthLetter)} id="btGame6">
+        {sixthLetter}
+      </button>
 
       <section>
-        <button onClick={() => backspace(letters)}>delete</button>
-        <button onClick={() => isValid(letters, gameWord)}>submit word</button>
+        <button onClick={() => backspace(letters)} id="btGame7">
+          delete
+        </button>
+        <button onClick={() => isValid(letters, gameWord)} id="btGame8">
+          submit word
+        </button>
       </section>
     </div>
   );
