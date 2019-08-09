@@ -18,7 +18,7 @@ const Timer = () => {
   return (
     <div>
       <h1>{value}</h1>
-      <BottomRow />
+      <BottomRow time={value} />
     </div>
   );
 };

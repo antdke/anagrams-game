@@ -9,7 +9,11 @@ import TopRow from "./TopRow";
  * 4. Display the scrambled, selected word in the bottom row
  */
 
-const BottomRow = () => {
+type BottomRowProps = {
+  time: number;
+};
+
+const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
   // test words
   const wordBank = ["MASTER"];
 
