@@ -271,7 +271,6 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
   const [letters, setLetters] = React.useState("");
 
   // functions that disables all buttons once timer hits zero
-
   const bt = document.getElementById("btGame") as HTMLTextAreaElement;
   if (time > 0 && bt != null) {
     bt.disabled = false;
