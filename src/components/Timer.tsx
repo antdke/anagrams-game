@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import BottomRow from "./BottomRow";
 import injectSheet from "react-jss";
 import { Theme } from "theming";
-import { Props } from "react-jss/lib/JssProvider";
 import { Classes } from "jss";
 
 // styles object
@@ -32,7 +31,7 @@ const Timer: React.FC<TimerProps> = ({ classes, theme }) => {
   const [value, setValue] = useState(60);
 
   // decrease value by 1 until value === 0
-  function tick(timerId: any) {
+  function tick(timerId: number) {
     if (value <= 0) {
       clearTimeout(timerId);
     } else {
