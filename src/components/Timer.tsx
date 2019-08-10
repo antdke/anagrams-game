@@ -12,6 +12,14 @@ const styles = (theme: Theme) => ({
     borderRadius: "6px",
     margin: "225px 125px 0",
     paddingBottom: "50px"
+  },
+  timer: {
+    width: "40px",
+    float: "right",
+    border: "1px solid grey",
+    borderRadius: "6px",
+    marginRight: "25px",
+    padding: "10px"
   }
 });
 
@@ -36,7 +44,7 @@ const Timer: React.FC<TimerProps> = ({ classes, theme }) => {
 
   return (
     <div className={classes.gameBorder}>
-      <h1>{value}</h1>
+      <h1 className={classes.timer}>{value}</h1>
       <BottomRow time={value} />
     </div>
   );
