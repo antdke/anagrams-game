@@ -9,7 +9,9 @@ import { Classes } from "jss";
 const styles = (theme: Theme) => ({
   gameBorder: {
     border: "1px solid grey",
-    borderRadius: "6px"
+    borderRadius: "6px",
+    margin: "225px 125px 0",
+    paddingBottom: "50px"
   }
 });
 
