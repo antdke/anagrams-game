@@ -181,13 +181,15 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
 
   // state of whether user is correct or not
   // controls whether correct effects or wrong effects happen
-  const [correctOrNot, setCorrectOrNot] = React.useState("Neither");
+  const [answerFeedback, setAnswerFeedback] = React.useState(
+    "Go ahead, give it a try!"
+  );
 
   /**
    * TEMPORARY states to test user word validation
    */
   // change color of validation text
-  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("");
+  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("pink");
   // keep track of score - add +1 point for every correct word
   const [score, setScore] = React.useState(0);
   // keep track of words used already by user
@@ -200,6 +202,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
 
     if (userWordArray.includes(userWord)) {
       setCorrectOrNotColor("purple");
+      setAnswerFeedback("You've used that word already. Try again!");
       setLetters("");
     } else {
       if (validWords.includes(userWord.toLowerCase())) {
@@ -207,22 +210,22 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
         setUserWordArray([userWord, ...userWordArray]);
         // check if user generate word is in list of acceptable words
         // if so, make this state true to trigger 'correct' effects
-        setCorrectOrNot("True");
+        setAnswerFeedback("Good job! That's a great word!");
         setCorrectOrNotColor("green");
         // add 1 to the score
         setScore(score + 1);
         // then clear letters in TopRow
         setLetters("");
         // returns state back to neither
-        setCorrectOrNot("Neither");
+        //setAnswerFeedback("Neither");
       } else {
         // if not, make this state false to trigger 'incorrect' effects
-        setCorrectOrNot("False");
+        setAnswerFeedback("Sorry, that word doesn't exist. Try again!");
         setCorrectOrNotColor("red");
         // clear letters in TopRow
         setLetters("");
         // returns state back to neither
-        setCorrectOrNot("Neither");
+        //setAnswerFeedback("Neither");
       }
     }
   }
@@ -337,9 +340,16 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
     bt8.disabled = true;
   }
 
+  // message to display when the timer hits zero
+  let gameOverMessage;
+  if (time === 0) {
+    gameOverMessage = <h2>GAME OVER. Your score is: {score}</h2>;
+  }
+
   return (
     <div>
-      <h1 style={{ color: correctOrNotColor }}>Valid???</h1>
+      {gameOverMessage}
+      <h3 style={{ color: correctOrNotColor }}>{answerFeedback}</h3>
       <h2>{"Score: " + score}</h2>
       <TopRow letters={letters} />
 
