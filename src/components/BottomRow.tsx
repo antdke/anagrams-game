@@ -189,7 +189,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
    * TEMPORARY states to test user word validation
    */
   // change color of validation text
-  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("pink");
+  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("orange");
   // keep track of score - add +1 point for every correct word
   const [score, setScore] = React.useState(0);
   // keep track of words used already by user
