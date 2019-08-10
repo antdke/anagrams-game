@@ -196,29 +196,34 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
   function isValid(userWord: string, gameWord: string) {
     //grab array of anagram words for the current game word
     validWords = getValidArray(gameWord);
-    // for every word generate by user, add to userWordArrary
-    setUserWordArray([userWord, ...userWordArray]);
     console.log(userWordArray.toString());
 
-    // check if user generate word is in list of acceptable words
-    if (validWords.includes(userWord.toLowerCase())) {
-      // if so, make this state true to trigger 'correct' effects
-      setCorrectOrNot("True");
-      setCorrectOrNotColor("green");
-      // add 1 to the score
-      setScore(score + 1);
-      // then clear letters in TopRow
+    if (userWordArray.includes(userWord)) {
+      setCorrectOrNotColor("purple");
       setLetters("");
-      // returns state back to neither
-      setCorrectOrNot("Neither");
     } else {
-      // if not, make this state false to trigger 'incorrect' effects
-      setCorrectOrNot("False");
-      setCorrectOrNotColor("red");
-      // clear letters in TopRow
-      setLetters("");
-      // returns state back to neither
-      setCorrectOrNot("Neither");
+      if (validWords.includes(userWord.toLowerCase())) {
+        // for every correct word generate by user, add to userWordArrary
+        setUserWordArray([userWord, ...userWordArray]);
+        // check if user generate word is in list of acceptable words
+        // if so, make this state true to trigger 'correct' effects
+        setCorrectOrNot("True");
+        setCorrectOrNotColor("green");
+        // add 1 to the score
+        setScore(score + 1);
+        // then clear letters in TopRow
+        setLetters("");
+        // returns state back to neither
+        setCorrectOrNot("Neither");
+      } else {
+        // if not, make this state false to trigger 'incorrect' effects
+        setCorrectOrNot("False");
+        setCorrectOrNotColor("red");
+        // clear letters in TopRow
+        setLetters("");
+        // returns state back to neither
+        setCorrectOrNot("Neither");
+      }
     }
   }
 
@@ -335,7 +340,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
   return (
     <div>
       <h1 style={{ color: correctOrNotColor }}>Valid???</h1>
-      <h2>{score}</h2>
+      <h2>{"Score: " + score}</h2>
       <TopRow letters={letters} />
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
