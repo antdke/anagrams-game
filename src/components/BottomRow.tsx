@@ -14,9 +14,32 @@ import { Classes } from "jss";
 
 const styles = (theme: Theme) => ({
   container: {
-
+    width: "500px",
+    margin: "75px auto 0"
+    //backgroundColor: "blue" FOR TESTING THE WIDTH
+  },
+  letterButtons: {
+    padding: "20px 26px",
+    margin: "20px 5px",
+    border: "none",
+    outline: "none",
+    borderRadius: "6px",
+    backgroundColor: "#ffe1a4",
+    fontSize: "30px",
+    fontWeight: "bold",
+    "&:disabled": {
+      cursor: "not-allowed"
+    },
+    "&:hover": {
+      boxShadow:
+        "0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)"
+    },
+    "&:active": {
+      boxShadow:
+        "0 3px 4px 0 rgba(0, 0, 0, 0.40), 0 3px 12px 0 rgba(0, 0, 0, 0.35)"
+    }
   }
-})
+});
 
 type BottomRowProps = {
   time: number;
@@ -358,7 +381,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
   }
 
   return (
-    <div>
+    <div className={classes.container}>
       {gameOverMessage}
       <h3 style={{ color: correctOrNotColor }}>{answerFeedback}</h3>
       <h2>{"Score: " + score}</h2>
@@ -366,22 +389,46 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
-      <button onClick={() => handleClick(firstLetter)} id="btGame">
+      <button
+        className={classes.letterButtons}
+        onClick={() => handleClick(firstLetter)}
+        id="btGame"
+      >
         {firstLetter}
       </button>
-      <button onClick={() => handleClick(secondLetter)} id="btGame2">
+      <button
+        className={classes.letterButtons}
+        onClick={() => handleClick(secondLetter)}
+        id="btGame2"
+      >
         {secondLetter}
       </button>
-      <button onClick={() => handleClick(thirdLetter)} id="btGame3">
+      <button
+        className={classes.letterButtons}
+        onClick={() => handleClick(thirdLetter)}
+        id="btGame3"
+      >
         {thirdLetter}
       </button>
-      <button onClick={() => handleClick(fourthLetter)} id="btGame4">
+      <button
+        className={classes.letterButtons}
+        onClick={() => handleClick(fourthLetter)}
+        id="btGame4"
+      >
         {fourthLetter}
       </button>
-      <button onClick={() => handleClick(fifthLetter)} id="btGame5">
+      <button
+        className={classes.letterButtons}
+        onClick={() => handleClick(fifthLetter)}
+        id="btGame5"
+      >
         {fifthLetter}
       </button>
-      <button onClick={() => handleClick(sixthLetter)} id="btGame6">
+      <button
+        className={classes.letterButtons}
+        onClick={() => handleClick(sixthLetter)}
+        id="btGame6"
+      >
         {sixthLetter}
       </button>
 
