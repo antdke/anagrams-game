@@ -1,5 +1,8 @@
 import React from "react";
 import TopRow from "./TopRow";
+import injectSheet from "react-jss";
+import { Theme } from "theming";
+import { Classes } from "jss";
 
 /**
  * This component will:
@@ -9,11 +12,19 @@ import TopRow from "./TopRow";
  * 4. Display the scrambled, selected word in the bottom row
  */
 
+const styles = (theme: Theme) => ({
+  container: {
+
+  }
+})
+
 type BottomRowProps = {
   time: number;
+  classes: Classes;
+  theme: Theme;
 };
 
-const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
+const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
   // test words
   const wordBank = ["MASTER"];
 
@@ -386,4 +397,4 @@ const BottomRow: React.FC<BottomRowProps> = ({ time }) => {
   );
 };
 
-export default BottomRow;
+export default injectSheet(styles)(BottomRow);
