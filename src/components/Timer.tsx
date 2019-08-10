@@ -1,7 +1,24 @@
 import React, { useState } from "react";
 import BottomRow from "./BottomRow";
+import injectSheet from "react-jss";
+import { Theme } from "theming";
+import { Props } from "react-jss/lib/JssProvider";
+import { Classes } from "jss";
 
-const Timer = () => {
+// styles object
+const styles = (theme: Theme) => ({
+  gameBorder: {
+    border: "1px solid grey",
+    borderRadius: "6px"
+  }
+});
+
+type TimerProps = {
+  classes: Classes;
+  theme: Theme;
+};
+
+const Timer: React.FC<TimerProps> = ({ classes, theme }) => {
   const [value, setValue] = useState(60);
 
   // decrease value by 1 until value === 0
@@ -16,11 +33,11 @@ const Timer = () => {
   var timerId = setTimeout(tick, 1000);
 
   return (
-    <div>
+    <div className={classes.gameBorder}>
       <h1>{value}</h1>
       <BottomRow time={value} />
     </div>
   );
 };
 
-export default Timer;
+export default injectSheet(styles)(Timer);
