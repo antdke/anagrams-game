@@ -27,12 +27,16 @@ const styles = (theme: Theme) => ({
     backgroundColor: "#ffe1a4",
     fontSize: "30px",
     fontWeight: "bold",
+    cursor: "pointer",
+    boxShadow: "0 2px 9px 0 rgba(0, 0, 0, 0.24)",
+    transitionDuration: "0.2s",
+    webKitTransitionDuration: "0.2s",
     "&:disabled": {
       cursor: "not-allowed"
     },
     "&:hover": {
       boxShadow:
-        "0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19)"
+        "0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 12px 35px 0 rgba(0, 0, 0, 0.19)"
     },
     "&:active": {
       boxShadow:
