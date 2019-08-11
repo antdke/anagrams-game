@@ -13,10 +13,14 @@ import { Classes } from "jss";
  */
 
 const styles = (theme: Theme) => ({
-  container: {
+  gameContainer: {
     width: "500px",
     margin: "75px auto 0"
     //backgroundColor: "blue" FOR TESTING THE WIDTH
+  },
+  topRowSpace: {
+    height: "30px",
+    marginBottom: "40px"
   },
   letterButtons: {
     padding: "20px 26px",
@@ -435,11 +439,14 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
   }
 
   return (
-    <div className={classes.container}>
+    <div className={classes.gameContainer}>
       {gameOverMessage}
       <h3 style={{ color: correctOrNotColor }}>{answerFeedback}</h3>
       <h2>{"Score: " + score}</h2>
-      <TopRow letters={letters} />
+
+      <div className={classes.topRowSpace}>
+        <TopRow letters={letters} />
+      </div>
 
       {/*Instead of mapping the buttons and trapping the key value inside the map,
       I'll just manually list them out since the letters are only 6 */}
