@@ -42,6 +42,56 @@ const styles = (theme: Theme) => ({
       boxShadow:
         "0 3px 4px 0 rgba(0, 0, 0, 0.40), 0 3px 12px 0 rgba(0, 0, 0, 0.35)"
     }
+  },
+  submitButton: {
+    padding: "10px 20px",
+    margin: "10px 10px",
+    border: "none",
+    borderRadius: "4px",
+    outline: "none",
+    fontWeight: "bold",
+    cursor: "pointer",
+    fontSize: "20px",
+    backgroundColor: "#4b84ce",
+    color: "white",
+    boxShadow: "0 2px 9px 0 rgba(0, 0, 0, 0.24)",
+    transitionDuration: "0.2s",
+    webKitTransitionDuration: "0.2s",
+    "&:disabled": {
+      cursor: "not-allowed"
+    },
+    "&:hover": {
+      boxShadow:
+        "0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 12px 35px 0 rgba(0, 0, 0, 0.19)"
+    },
+    "&:active": {
+      boxShadow:
+        "0 3px 4px 0 rgba(0, 0, 0, 0.40), 0 3px 12px 0 rgba(0, 0, 0, 0.35)"
+    }
+  },
+  deleteButton: {
+    padding: "10px 20px",
+    margin: "10px 10px",
+    border: "none",
+    borderRadius: "4px",
+    outline: "none",
+    fontWeight: "bold",
+    cursor: "pointer",
+    fontSize: "20px",
+    boxShadow: "0 4px 11px 0 rgba(0, 0, 0, 0.24)",
+    transitionDuration: "0.2s",
+    webKitTransitionDuration: "0.2s",
+    "&:disabled": {
+      cursor: "not-allowed"
+    },
+    "&:hover": {
+      boxShadow:
+        "0 10px 14px 0 rgba(0, 0, 0, 0.24), 0 12px 35px 0 rgba(0, 0, 0, 0.19)"
+    },
+    "&:active": {
+      boxShadow:
+        "0 3px 4px 0 rgba(0, 0, 0, 0.40), 0 3px 12px 0 rgba(0, 0, 0, 0.35)"
+    }
   }
 });
 
@@ -437,10 +487,18 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
       </button>
 
       <section>
-        <button onClick={() => backspace(letters)} id="btGame7">
+        <button
+          className={classes.deleteButton}
+          onClick={() => backspace(letters)}
+          id="btGame7"
+        >
           delete
         </button>
-        <button onClick={() => isValid(letters, gameWord)} id="btGame8">
+        <button
+          className={classes.submitButton}
+          onClick={() => isValid(letters, gameWord)}
+          id="btGame8"
+        >
           submit word
         </button>
       </section>
