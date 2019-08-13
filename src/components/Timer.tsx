@@ -7,18 +7,25 @@ import { Classes } from "jss";
 // styles object
 const styles = (theme: Theme) => ({
   gameBorder: {
-    border: "1px solid grey",
+    border: "1px solid #fadadf",
     borderRadius: "6px",
     margin: "225px 125px 0",
-    paddingBottom: "50px"
+    paddingBottom: "50px",
+    backgroundColor: "#fadadf",
+    boxShadow: "0 4px 9px 0 rgba(0, 0, 0, 0.24)"
   },
   timer: {
     width: "40px",
     float: "right",
-    border: "1px solid grey",
+    border: "1px solid #dffada",
     borderRadius: "6px",
     marginRight: "25px",
-    padding: "10px"
+    padding: "10px",
+    backgroundColor: "#dffada",
+    boxShadow: "0 2px 9px 0 rgba(0, 0, 0, 0.24)",
+    "&:hover": {
+      boxShadow: "0 8px 9px 0 rgba(0, 0, 0, 0.24)"
+    }
   }
 });
 
