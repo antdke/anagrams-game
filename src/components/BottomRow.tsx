@@ -288,7 +288,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
   // keep track of score - add points for every correct word
   const [score, setScore] = React.useState(0);
   // keep track of words used already by user
-  const [userWordArray, setUserWordArray] = React.useState([""]);
+  const [userWordArray, setUserWordArray] = React.useState([]);
 
   function isValid(userWord: string, gameWord: string) {
     //grab array of anagram words for the current game word
@@ -315,7 +315,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
           setCorrectOrNotColor("green");
           setScore(score + 300);
         } else if (userWord.length === 5) {
-          setAnswerFeedback("Whoa there smarty pants!! 🤓 Excellent Word! ");
+          setAnswerFeedback("Whoa smarty pants!! Excellent Word! 🤓");
           setCorrectOrNotColor("green");
           setScore(score + 700);
         } else if (userWord.length === 6) {
@@ -453,7 +453,15 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
   // message to display when the timer hits zero
   let gameOverMessage;
   if (time === 0) {
-    gameOverMessage = <h2>GAME OVER. Your score is: {score}</h2>;
+    gameOverMessage = (
+      <div style={{ marginBottom: "50px" }}>
+        <h1 style={{ fontSize: "45px" }}> 👾 GAME OVER 👾 </h1>
+        <h2>Your score is: {score} </h2>
+        <h2>You created {userWordArray.length} words.</h2>
+        <h4>{userWordArray.toString()}</h4>
+        <hr />
+      </div>
+    );
   }
 
   return (
