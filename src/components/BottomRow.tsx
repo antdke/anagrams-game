@@ -297,15 +297,30 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
       setAnswerFeedback("You've used that word already. Try again!");
       setLetters("");
     } else {
+      // CORRECT WORD PATH
       if (validWords.includes(userWord.toLowerCase())) {
         // for every correct word generate by user, add to userWordArrary
         setUserWordArray([userWord, ...userWordArray]);
-        // check if user generate word is in list of acceptable words
-        // if so, make this state true to trigger 'correct' effects
-        setAnswerFeedback("Good job! That's a great word!");
-        setCorrectOrNotColor("green");
-        // add 1 to the score
-        setScore(score + 1);
+
+        // depending on the length of the word, give certain amounts of points
+        if (userWord.length === 3) {
+          setAnswerFeedback("Nice word! Keep it up 👍");
+          setCorrectOrNotColor("green");
+          setScore(score + 100);
+        } else if (userWord.length === 4) {
+          setAnswerFeedback("Good job! That's a great word 😃");
+          setCorrectOrNotColor("green");
+          setScore(score + 300);
+        } else if (userWord.length === 5) {
+          setAnswerFeedback("Whoa there smarty pants!! 🤓 Excellent Word! ");
+          setCorrectOrNotColor("green");
+          setScore(score + 700);
+        } else if (userWord.length === 6) {
+          setAnswerFeedback("WOW!! 2000 points! Phenomenal Word 🔥 🔥 🔥");
+          setCorrectOrNotColor("green");
+          setScore(score + 2000);
+        }
+
         // then clear letters in TopRow
         setLetters("");
         // returns state back to neither
