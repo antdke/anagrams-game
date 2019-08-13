@@ -274,14 +274,14 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
   // state of whether user is correct or not
   // controls whether correct effects or wrong effects happen
   const [answerFeedback, setAnswerFeedback] = React.useState(
-    "Go ahead, give it a try!"
+    "🙌  Go ahead, give it a try! 😎"
   );
 
   /**
    * TEMPORARY states to test user word validation
    */
   // change color of validation text
-  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("orange");
+  const [correctOrNotColor, setCorrectOrNotColor] = React.useState("blue");
   // keep track of score - add +1 point for every correct word
   const [score, setScore] = React.useState(0);
   // keep track of words used already by user
@@ -294,7 +294,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
 
     if (userWordArray.includes(userWord)) {
       setCorrectOrNotColor("purple");
-      setAnswerFeedback("You've used that word already. Try again!");
+      setAnswerFeedback("You've used that word already. Try again! 🙆‍");
       setLetters("");
     } else {
       // CORRECT WORD PATH
