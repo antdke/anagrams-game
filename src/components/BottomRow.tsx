@@ -20,7 +20,7 @@ const styles = (theme: Theme) => ({
   },
   topRowSpace: {
     height: "30px",
-    marginBottom: "40px"
+    marginBottom: "60px"
   },
   letterButtons: {
     padding: "20px 26px",
@@ -96,6 +96,9 @@ const styles = (theme: Theme) => ({
       boxShadow:
         "0 3px 4px 0 rgba(0, 0, 0, 0.40), 0 3px 12px 0 rgba(0, 0, 0, 0.35)"
     }
+  },
+  score: {
+    fontSize: "45px"
   }
 });
 
@@ -282,7 +285,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
    */
   // change color of validation text
   const [correctOrNotColor, setCorrectOrNotColor] = React.useState("blue");
-  // keep track of score - add +1 point for every correct word
+  // keep track of score - add points for every correct word
   const [score, setScore] = React.useState(0);
   // keep track of words used already by user
   const [userWordArray, setUserWordArray] = React.useState([""]);
@@ -327,7 +330,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
         //setAnswerFeedback("Neither");
       } else {
         // if not, make this state false to trigger 'incorrect' effects
-        setAnswerFeedback("Sorry, that word doesn't exist. Try again!");
+        setAnswerFeedback("Sorry, that word doesn't exist. Try again! ❌");
         setCorrectOrNotColor("red");
         // clear letters in TopRow
         setLetters("");
@@ -457,7 +460,7 @@ const BottomRow: React.FC<BottomRowProps> = ({ time, theme, classes }) => {
     <div className={classes.gameContainer}>
       {gameOverMessage}
       <h3 style={{ color: correctOrNotColor }}>{answerFeedback}</h3>
-      <h2>{"Score: " + score}</h2>
+      <h2 className={classes.score}>{"Score: " + score}</h2>
 
       <div className={classes.topRowSpace}>
         <TopRow letters={letters} />

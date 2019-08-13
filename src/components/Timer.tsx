@@ -9,7 +9,7 @@ const styles = (theme: Theme) => ({
   gameBorder: {
     border: "1px solid #fadadf",
     borderRadius: "6px",
-    margin: "225px 125px 0",
+    margin: "125px 125px 0",
     paddingBottom: "50px",
     backgroundColor: "#fadadf",
     boxShadow: "0 4px 9px 0 rgba(0, 0, 0, 0.24)"
