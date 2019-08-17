@@ -4,7 +4,7 @@ I created a game where the user creates as many words as possible in 60 secs. I 
 
 ## DEMO
 
-![Anthony's Anagrams Demo]()
+![Anthony's Anagrams Demo](demo/anagrams-demo.gif)
 
 ## Getting Started
 
