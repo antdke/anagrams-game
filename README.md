@@ -1,4 +1,4 @@
-# Anthony's Anagrams 
+# Anthony's Anagrams 🔠
 
 I created a game where the user creates as many words as possible in 60 secs. I used React with TypeScript, along with react-jss for styles and Firebase for storing game data.
 
